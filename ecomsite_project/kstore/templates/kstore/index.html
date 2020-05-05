@@ -1,0 +1,27 @@
+{% extends 'kstore/base.html' %}
+
+{% block content %}
+
+<!--Section: Products v.3-->
+<br>
+<br>
+
+<div class="row">
+  {% for product in products %}
+  <div class="col-lg-4">
+    <img class="thumbnail" src="https://picsum.photos/640/320">
+    <a class="mask rgba-white-slight" href="{{ product.get_absolute_url }}">
+
+    </a>
+    <div class="box-element product">
+      <h6><strong>{{ product.title }}</strong></h6>
+      <hr>
+      <a class="btn btn-outline-secondary" href="{% url 'cart' product.id %}">Add to cart</a>
+      <a class="btn btn-outline-success" href="{{ product.get_absolute_url }}">View Product</a>
+      <h4 style="display: inline-block; float: right;">{{ product.price }}</h4>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
